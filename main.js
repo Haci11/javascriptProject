@@ -1,5 +1,11 @@
 window.onload = function () {
   const panels = document.querySelectorAll(".panel");
+  const open = document.getElementById("open");
+  const close = document.getElementById("close");
+  const container = document.querySelector(".container");
+
+  open.addEventListener("click", () => container.classList.add("show-nav"));
+  close.addEventListener("click", () => container.classList.remove("show-nav"));
 
   panels.forEach((panel) =>
     panel.addEventListener("click", () => {
