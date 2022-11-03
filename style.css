@@ -5,16 +5,65 @@
 }
 
 body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  overflow: hidden;
+  background-color: #333;
+  overflow-x: hidden;
 }
 
 .container {
+  background-color: #fff;
+  transform-origin: top left;
+  width: 100vw;
+  min-height: 100vh;
+  padding: 50px;
+  transition: transform 0.5s linear;
+}
+
+.container.show-nav {
+  transform: rotate(-20deg);
+}
+
+.panel__container {
   display: flex;
-  width: 60vw;
+  align-items: center;
+  justify-content: center;
+}
+
+.circle-container {
+  position: fixed;
+  top: -100px;
+  left: -100px;
+  z-index: 3;
+}
+
+.circle {
+  background-color: #ff7979;
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  position: relative;
+  transition: transform 0.5s linear;
+}
+.circle button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 100px;
+  background: transparent;
+  border: 0;
+  font-size: 2rem;
+  color: #fff;
+}
+.circle button:focus {
+  outline: none;
+}
+
+.circle button#open {
+  left: 60%;
+}
+.circle button#close {
+  top: 60%;
+  transform: rotate(90deg);
+  transform-origin: top left;
 }
 
 .panel {
