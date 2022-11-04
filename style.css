@@ -166,16 +166,19 @@ nav ul li + li + li {
   height: 200px;
   margin: 10px;
   border-radius: 10px;
-  transform: translateX(400%);
-  transition: transform 0.3s ease;
+  transform: translateX(800%);
+  transition: transform 0.5s ease;
+  z-index: -99999999;
 }
 
 .box:nth-last-of-type(even) {
-  transform: translateX(-400%);
+  transform: translateX(-800%);
+  z-index: 100;
 }
 
 .box.show {
   transform: translateX(0);
+  z-index: 100;
 }
 
 @media screen and (max-width: 580px) {

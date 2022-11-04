@@ -5,34 +5,38 @@ window.onload = function () {
   const container = document.querySelector(".container");
   const boxes = document.querySelectorAll(".box");
 
-  window.addEventListener("scroll", checkBoxes);
-  checkBoxes();
-  function checkBoxes() {
-    const triggerBottom = (window.innerHeight / 5) * 4;
-    boxes.forEach((box) => {
-      const boxTop = box.getBoundingClientRect().top;
-      if (boxTop < triggerBottom) {
-        box.classList.add("show");
-      } else {
-        box.classList.remove("show");
-      }
+  // For images in index.html
+
+  for (let i = 0; i < panels.length; i++) {
+    panels[i].addEventListener("click", () => {
+      removeActiveClasses();
+      panels[i].classList.add("active");
     });
   }
-
-  open.addEventListener("click", () => container.classList.add("show-nav"));
-  close.addEventListener("click", () => container.classList.remove("show-nav"));
-
-  panels.forEach((panel) =>
-    panel.addEventListener("click", () => {
-      removeActiveClasses();
-      panel.classList.add("active");
-      console.log("b");
-    })
-  );
 
   function removeActiveClasses() {
     panels.forEach((panel) => {
       panel.classList.remove("active");
+    });
+  }
+
+  //For Nav
+
+  open.addEventListener("click", () => container.classList.add("show-nav"));
+  close.addEventListener("click", () => container.classList.remove("show-nav"));
+
+  //For Scrolling Animation
+
+  window.addEventListener("scroll", checkBoxes);
+  checkBoxes();
+
+  function checkBoxes() {
+    const triggerBottom = (window.innerHeight / 5) * 3;
+    boxes.forEach((box) => {
+      const boxTop = box.getBoundingClientRect().top;
+      boxTop < triggerBottom
+        ? box.classList.add("show")
+        : box.classList.remove("show");
     });
   }
 };
