@@ -4,26 +4,37 @@ window.onload = function () {
   const close = document.getElementById("close");
   const container = document.querySelector(".container");
   const boxes = document.querySelectorAll(".box");
+  const body = document.querySelector("body");
+
+  function handelOpenMenu() {
+    container.classList.add("show-nav");
+    body.style.overflow = "hidden";
+  }
+
+  function handelCloseMenu() {
+    container.classList.remove("show-nav");
+    body.style.overflow = "unset";
+  }
 
   // For images in index.html
 
-  for (let i = 0; i < panels.length; i++) {
-    panels[i].addEventListener("click", () => {
+  panels.forEach((panel) =>
+    panel.addEventListener("click", () => {
       removeActiveClasses();
-      panels[i].classList.add("active");
-    });
-  }
+      panel.classList.add("active");
+      console.log("b");
+    })
+  );
 
   function removeActiveClasses() {
     panels.forEach((panel) => {
       panel.classList.remove("active");
     });
   }
-
   //For Nav
 
-  open.addEventListener("click", () => container.classList.add("show-nav"));
-  close.addEventListener("click", () => container.classList.remove("show-nav"));
+  open.addEventListener("click", () => handelOpenMenu());
+  close.addEventListener("click", () => handelCloseMenu());
 
   //For Scrolling Animation
 
